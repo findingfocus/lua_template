@@ -15,12 +15,6 @@ function TitleScreenState:update(dt)
 		highlighted = highlighted == 1 and 2 or 1
 		sounds['beep']:play()
 	end
-
-	if love.keyboard.wasPressed('h') then
-		sounds['titleMusic']:stop()
-		gStateMachine:change('helpState')
-	end
-
 	if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
 		if highlighted == 1 then
 			sounds['titleMusic']:stop()
@@ -56,8 +50,5 @@ function TitleScreenState:render()
 	end
 	love.graphics.printf('HELL YAH', 0, VIRTUAL_HEIGHT / 2 + 100, VIRTUAL_WIDTH - 40, 'right')
 	love.graphics.setColor(255/255, 255/255, 255/255, 255/255)
-
-	love.graphics.setFont(pixelFont)
-	love.graphics.printf('Press "H" For Help', 0, VIRTUAL_HEIGHT / 2 + 320, VIRTUAL_WIDTH, 'center')
 
 end
