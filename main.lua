@@ -7,7 +7,7 @@ require '/dependencies/BaseState'
 
 require '/states/TitleScreenState'
 require '/states/PlayState'
-require '/states/TripState'
+require '/states/FunState'
 require '/states/HelpState'
 
 --1280 800
@@ -22,15 +22,12 @@ VIRTUAL_HEIGHT = 800
 function love.load()
 	love.graphics.setDefaultFilter('nearest', 'nearest')
 
-	love.window.setTitle('Trippy Happy')
+	love.window.setTitle('Game Template')
 
 	pixelFont = love.graphics.newFont('fonts/Pixel.ttf', 40)
 	love.graphics.setFont(pixelFont)
 
 	sounds = {
-		--['titleMusic'] = love.audio.newSource('music/titlemusic.mp3', 'static'),
-		--['playMusic'] = love.audio.newSource('music/playstatemusic.mp3', 'static'),
-		--['tripMusic'] = love.audio.newSource('music/trippingmusic.mp3', 'static'),
 		['beep'] = love.audio.newSource('music/beep.wav', 'static'),
 		['select'] = love.audio.newSource('music/select.wav', 'static')
 	}
@@ -44,7 +41,7 @@ function love.load()
 	gStateMachine = StateMachine {
 		['titleState'] = function() return TitleScreenState() end,
 		['playState'] = function() return PlayState() end,
-		['tripState'] = function() return TripState() end,
+		['funState'] = function() return FunState() end,
 		['helpState'] = function() return HelpState() end
 	}
 
@@ -75,16 +72,12 @@ function love.keyboard.wasPressed(key)
 end
 
 
-
-
-
 function love.update(dt)
 
 	gStateMachine:update(dt)
 
 	love.keyboard.keysPressed = {} 
 end
-
 
 
 function love.draw()
